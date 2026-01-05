@@ -1,36 +1,129 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NetArt Photography - אתר צילום מקצועי
 
-## Getting Started
+אתר נחיתה מקצועי לצלמת עצמאית, בנוי עם Next.js 14, Tailwind CSS, ו-Sanity CMS.
 
-First, run the development server:
+## תכונות עיקריות
+
+- 🎨 עיצוב מודרני ואלגנטי בעברית (RTL)
+- 📱 רספונסיבי לכל המכשירים
+- 🖼️ גלריות תמונות לכל שירות עם Lightbox
+- ✏️ ניהול תוכן קל עם Sanity CMS
+- 📧 טופס יצירת קשר עם שליחה למייל
+- 💬 כפתור WhatsApp צף
+- 🔗 אינטגרציה עם רשתות חברתיות
+
+## שירותים המוצגים באתר
+
+- צילומי הריון
+- צילומי משפחה
+- צילומי אירועים
+- צילומי בוק בר/בת מצווה
+- צילומי תדמית לעסק
+- הצעת נישואין
+
+## התקנה
 
 ```bash
+# התקנת תלויות
+npm install
+
+# הרצה בסביבת פיתוח
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## הגדרת סביבה
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+ראו את הקובץ `ENV_SETUP.md` להוראות מלאות.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+צרו קובץ `.env.local` עם המשתנים הבאים:
 
-## Learn More
+```
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01
+NEXT_PUBLIC_FORMSPREE_ENDPOINT=your_formspree_endpoint
+```
 
-To learn more about Next.js, take a look at the following resources:
+## ניהול תוכן (Sanity CMS)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### גישה לממשק הניהול
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+לאחר הגדרת Sanity, גשו לכתובת:
+- פיתוח: `http://localhost:3000/studio`
+- ייצור: `https://your-domain.com/studio`
 
-## Deploy on Vercel
+### עריכת תוכן
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+בממשק הניהול תוכלו לערוך:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **הגדרות האתר** - כותרות, טקסטים, תמונות ופרטי קשר
+2. **שירותים** - כל שירות עם תיאור וגלריית תמונות משלו
+
+### הוספת תמונות
+
+1. היכנסו לממשק הניהול
+2. בחרו את השירות או ההגדרה הרצויה
+3. גררו ושחררו תמונות לשדות המתאימים
+4. Sanity יטפל באופטימיזציה אוטומטית
+
+## מבנה הפרויקט
+
+```
+src/
+├── app/
+│   ├── page.tsx              # דף הבית
+│   ├── services/[slug]/      # דפי שירותים
+│   └── studio/               # ממשק ניהול Sanity
+├── components/
+│   ├── Header.tsx
+│   ├── Hero.tsx
+│   ├── About.tsx
+│   ├── ServicesGrid.tsx
+│   ├── ServiceGallery.tsx
+│   ├── ImageLightbox.tsx
+│   ├── Contact.tsx
+│   ├── Footer.tsx
+│   └── WhatsAppButton.tsx
+├── sanity/
+│   ├── schemas/              # סכמות תוכן
+│   ├── client.ts
+│   ├── queries.ts
+│   └── lib.ts
+└── lib/
+    └── utils.ts              # מידע סטטי
+```
+
+## תיקיות תמונות
+
+```
+public/images/
+├── hero/                     # תמונות ראשיות
+├── about/                    # תמונת הצלמת
+└── services/
+    ├── pregnancy/            # גלריית הריון
+    ├── family/               # גלריית משפחה
+    ├── events/               # גלריית אירועים
+    ├── bar-mitzvah/          # גלריית בר/בת מצווה
+    ├── business/             # גלריית תדמית
+    └── proposal/             # גלריית הצעות נישואין
+```
+
+## פרסום
+
+הפרויקט אופטימיזי לפרסום ב-Vercel:
+
+```bash
+npm run build
+```
+
+## טכנולוגיות
+
+- [Next.js 14](https://nextjs.org/) - App Router
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Sanity CMS](https://www.sanity.io/)
+- [Formspree](https://formspree.io/) - שליחת טפסים
+
+## רישיון
+
+כל הזכויות שמורות © NetArt
